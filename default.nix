@@ -1,5 +1,7 @@
 { config, libs, pkgs, ... }:
 
 {
-  imports = [./modules ];
+  modules = import modules/default.nix {
+    inherit config libs pkgs;
+  };
 }
