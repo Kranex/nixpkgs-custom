@@ -1,5 +1,4 @@
-{ stdenv, fetchFromGitHub,
-  qt5.qtbase, qt5.qtquickcontrols, qt5.qtgraphicaleffects}:
+{ stdenv, fetchFromGitHub, qt5}:
 
 stdenv.mkDerivation rec {
   pname = "chili";
@@ -11,6 +10,8 @@ stdenv.mkDerivation rec {
     rev = version;
     sha256 = "036fxsa7m8ymmp3p40z671z163y6fcsa9a641lrxdrw225ssq5f3";
   };
+
+  buildinputs = [ qt5.qtbase qt5.qtquickcontrols qt5.qtgraphicaleffects ];
 
   installPhase = ''
     mkdir -p $out/share/sddm/themes/chili
@@ -26,6 +27,4 @@ stdenv.mkDerivation rec {
       Chili is hot, just like a real chili! Spice up the login experience for your users, your family and yourself. Chili reduces all the clutter and leaves you with a clean, easy to use, login interface with a modern yet classy touch.
     '';
   };
-
-  inherit qt5.qtbase qt5.qtquickcontrols qt5.qtgraphicaleffects;
 }
