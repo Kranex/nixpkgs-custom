@@ -1,4 +1,5 @@
-{ stdenv, fetchFromGitHub }:
+{ stdenv, fetchFromGitHub,
+  qt5.qtbase, qt5.qtquickcontrols, qt5.qtgraphicaleffects}:
 
 stdenv.mkDerivation rec {
   pname = "chili";
@@ -25,4 +26,6 @@ stdenv.mkDerivation rec {
       Chili is hot, just like a real chili! Spice up the login experience for your users, your family and yourself. Chili reduces all the clutter and leaves you with a clean, easy to use, login interface with a modern yet classy touch.
     '';
   };
+
+  inherit qt5.qtbase qt5.qtquickcontrols qt5.qtgraphicaleffects;
 }
