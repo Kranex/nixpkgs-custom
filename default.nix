@@ -1,8 +1,8 @@
 {pkgs, ...}:
 {
-  sddm.themes.chili = pkgs.callPackage ./pkgs/sddm/themes/chili {
-    qtbase = pkgs.qtbase;
-  };
+  hello = pkgs.callPackage ./pkgs/hello { };
+
+  sddm.themes.chili = pkgs.callPackage ./pkgs/sddm/themes/chili { };
 
   modules = import ./modules;
 }
