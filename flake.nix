@@ -5,11 +5,13 @@
 
   outputs = {self, nixpkgs}:
     let
-
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
-    in rec {
+    in
+    rec {
+      packages.sddm-chili = pkgs.callPackage ./pkgs/sddm/themes/chili {  };
+
       nixosModules.nixpkgs-custom = {
         imports = [ ./modules ];
       };

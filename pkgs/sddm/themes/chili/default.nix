@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, qtbase, qtquickcontrols, qtgraphicaleffects }:
+{ stdenv, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
   pname = "chili";
@@ -10,8 +10,6 @@ stdenv.mkDerivation rec {
     rev = version;
     sha256 = "036fxsa7m8ymmp3p40z671z163y6fcsa9a641lrxdrw225ssq5f3";
   };
-
-  buildInputs = [ qtbase qtquickcontrols qtgraphicaleffects ];
 
   installPhase = ''
     mkdir -p $out/share/sddm/themes/chili
