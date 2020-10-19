@@ -1,14 +1,17 @@
 {
   description = "A custom set of packages and modules for nixos";
 
-  inputs.pkgs.url = github:NixOS/nixpkgs/nixos-20.09;
+  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixos-20.09;
 
-  outputs = {self, pkgs}: {
+  outputs = {self, nixpkgs}:
+    let
 
-    packages.sddm.themes.chili = pkgs.callPackage ./pkgs/sddm/themes/chili {  };
-
-    nixosModules.nixpkgs-custom = {
-      imports = [./modules];
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+      };
+    in rec {
+      nixosModules.nixpkgs-custom = {
+        imports = [ ./modules ];
+      };
     };
-  };
 }
