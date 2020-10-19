@@ -2,6 +2,6 @@
 
 {
   modules = import modules/default.nix {
-    inherit config, libs, pkgs;
+    inherit config libs pkgs;
   };
 }
