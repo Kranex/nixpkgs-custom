@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./alacritty
-    ./bspwm
-    ./eclipse
+    ./programs/alacritty
+    ./programs/bspwm
+    ./programs/eclipse
   ];
 }
