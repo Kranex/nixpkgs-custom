@@ -100,15 +100,17 @@ in
     };
 
     config = mkIf cfg.enable {
-      system.activationScripts.alacritty = ''
-        for d in $(grep -v "nologin" /etc/passwd | cut -d: -f6); do
-        if [ ! -e ''${d}/.config/alacritty/alacritty.yml ]; then
-          mkdir -p ''${d}/.config/alacritty
-          ln -s /etc/alacritty/alacritty.yml ''${d}/.config/alacritty/alacritty.yml
-        fi
-        done
-      '';
-      environment.systemPackages = with pkgs; [ alacritty ];
+      environment.systemPackages = [
+        (pkgs.symlinkJoin {
+          name = "alacritty";
+          paths = [ pkgs.alacritty ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/alacritty \
+              --config-file /etc/alacritty/alacritty.yml
+          '';
+        })
+      ];
       environment.etc."alacritty/alacritty.yml".text = ''
       #Font configuration
         font:
