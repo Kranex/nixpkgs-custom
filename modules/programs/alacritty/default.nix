@@ -107,7 +107,7 @@ in
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
             wrapProgram $out/bin/alacritty \
-              --config-file /etc/alacritty/alacritty.yml
+              --add-flags "--config-file /etc/alacritty/alacritty.yml"
           '';
         })
       ];
