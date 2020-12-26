@@ -10,9 +10,7 @@
       };
     in
     rec {
-      packages.sddm-chili = pkgs.callPackage ./pkgs/sddm/themes/chili {  };
-
-      nixosModules.nixpkgs-custom = {
+      nixosModules.custom = {
         imports = [ ./modules ];
       };
     };
